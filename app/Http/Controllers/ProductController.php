@@ -12,7 +12,8 @@ class ProductController extends Controller
 {
     // This will show the product page
     public function index(){
-        return view ('products.list');
+        $products = Product::orderBy('created_at','ASC')->get();
+        return view ('products.list', compact('products'));
     }
 
     //This will show the create product page

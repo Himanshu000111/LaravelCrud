@@ -40,6 +40,39 @@
                         <div class="card-header bg-dark">
                             <h3 class="text-white">Products</h3>
                         </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Product Image</th>
+                                    <th>Name</th>
+                                    <th>SKU</th>
+                                    <th>Price</th>
+                                    <th>Created At</th>
+                                    <th>Actions</th>
+                                </tr>
+                                @if ($products->isNotEmpty())
+                                    @foreach ($products as $product)
+                                    <tr>
+                                       <td>{{ $product->id }}</td> 
+                                       <td class="text-center">
+                                            @if ($product->image != "")
+                                                <img src="{{ asset('uploads/products/'.$product->image) }}" width="50" class="mx-auto" alt="dsfg" >
+                                            @endif
+                                        </td> 
+                                       <td>{{ $product->name }}</td> 
+                                       <td>{{ $product->sku }}</td> 
+                                       <td>{{ $product->price }}</td> 
+                                       <td>{{ $product->created_at }}</td> 
+                                       <td>
+                                            <a href="#" class="btn btn-dark">Edit</a>
+                                            <a href="#" class="btn btn-danger">Delete</a>
+                                        </td> 
+                                    </tr> 
+                                    @endforeach
+                                @endif
+                            </table>
+                        </div>
                     </div>
                 </div>
         </div>
